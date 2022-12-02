@@ -1,0 +1,1 @@
+ffmpeg -re -i rtsp://10.0.0.5:8554/stream1 -c:v libx264 -f flv rtmp://4.240.64.218/show/stream

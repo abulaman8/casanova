@@ -1,0 +1,3 @@
+sk.eyJ1IjoiYWJ1bGFtYW4iLCJhIjoiY2xiNjNqcnUwMDBpaTNwazI4bHVzc3UwNiJ9.-rCXn4Ewf1OG1_oUdB1gQw
+
+https://api.mapbox.com/styles/v1/abulaman/clb63m3qx000s14nx615hn714/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYWJ1bGFtYW4iLCJhIjoiY2wzMzh1d25wMGlyNzNrcDV5NGpkNHQ5OSJ9.vWp-v0UIFzwp77pDMMoKSQ

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css' rel='stylesheet' />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Dashboard</h1>
+
+    <div id='map' style='width: 100%; height: 720px;'></div>
+
+
+    <script>
+        const roomName = 'admin_room'
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWJ1bGFtYW4iLCJhIjoiY2wzMzh1d25wMGlyNzNrcDV5NGpkNHQ5OSJ9.vWp-v0UIFzwp77pDMMoKSQ';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            center: [80.233869, 12.991893], // starting position [lng, lat]
+            zoom: 15, // starting zoom
+        });
+
+        const chatSocket = new WebSocket(
+            'ws://' +
+            window.location.host +
+            '/ws/admin/' +
+            roomName +
+            '/'
+        );
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            let lat = data.lattitude
+            let lng = data.longitude
+            console.log(lat, lng)
+            var marker = new mapboxgl.Marker({
+                    color: "red",
+                })
+                .setLngLat([lng, lat])
+                .addTo(map);
+        };
+
+
+
+        var marker = new mapboxgl.Marker()
+            .setLngLat([80.233869, 12.991893])
+            .addTo(map);
+    </script>
+</body>
+
+</html>
